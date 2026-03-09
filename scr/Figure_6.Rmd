@@ -1,0 +1,166 @@
+---
+title: "Sarni et al., Figure 6"
+author: "dsarni"
+date: "26-02-2026"
+output: html_document
+---
+
+## Figure 6. DNMT3AGOF hypermethylation corresponds to sites of DNA methylation gains in human ageing
+
+1. Libraries used in this figure.
+
+```{r, message = F}
+library(ggplot2)
+library(dplyr)
+library(RColorBrewer)
+```
+
+2. Import files
+
+```{r}
+# Figure 6.b
+heyn_k27_high <- read.table("../data/Figure_6/Heyn_PNAS_hDMVs_k27_HIGH_hg19_20K_10k_250_211124.tsv", header = T)
+heyn_k27_low <- read.table("../data/Figure_6/Heyn_PNAS_hDMVs_k27_LOW_hg19_20K_10k_250_211124.tsv", header = T)
+
+# Figure 6.c
+gen_scot_df <- read.table("../data/Figure_6/Gen_Scot_corr_hesjas_horvath.tsv.gz", header = T)
+```
+
+### Fig6.b
+
+DNA methylation profiles along hDMVs in three healthy individuals from [Heyn et al., PNAS 2013] (https://doi.org/10.1073/pnas.1120658109).
+
+3. Split tables by samples (age)
+
+```{r}
+# K27.high
+nb.k27.high <- heyn_k27_high[,1:160]
+mid.k27.high <- heyn_k27_high[,161:320]
+old.k27.high <- heyn_k27_high[,321:480]
+
+# K27.low
+nb.k27.low <- heyn_k27_low[,1:160]
+mid.k27.low <- heyn_k27_low[,161:320]
+old.k27.low <- heyn_k27_low[,321:480]
+```
+
+4. Create pileup tables to fit plotting with ggplot
+
+```{r}
+##################
+# hDMV at high k27
+##################
+
+pileup_heyn_df_high <- data.frame(nb = NA,
+                                  mid = NA,
+                                  old = NA)
+
+for(i in 1:length(nb.k27.high)){
+  
+  pileup_heyn_df_high[i,1] <- mean(nb.k27.high[,i], na.rm = T)
+  pileup_heyn_df_high[i,2] <- mean(mid.k27.high[,i], na.rm = T)
+  pileup_heyn_df_high[i,3] <- mean(old.k27.high[,i], na.rm = T)
+  
+}
+
+pileup_heyn_df_high$X <- as.character(row.names(pileup_heyn_df_high), ordered = T)
+pileup_heyn_df_high$X <- factor(pileup_heyn_df_high$X, levels = unique(pileup_heyn_df_high$X))
+
+#################
+# hDMV at low k27
+#################
+
+pileup_heyn_df_low <- data.frame(nb = NA,
+                                 mid = NA,
+                                 old = NA)
+
+for(i in 1:length(nb.k27.low)){
+  
+  pileup_heyn_df_low[i,1] <- mean(nb.k27.low[,i], na.rm = T)
+  pileup_heyn_df_low[i,2] <- mean(mid.k27.low[,i], na.rm = T)
+  pileup_heyn_df_low[i,3] <- mean(old.k27.low[,i], na.rm = T)
+  
+}
+
+pileup_heyn_df_low$X <- as.character(row.names(pileup_heyn_df_low), ordered = T)
+pileup_heyn_df_low$X <- factor(pileup_heyn_df_low$X, levels = unique(pileup_heyn_df_low$X))
+```
+
+5. Plots
+
+* Polycomb positive hDMVs
+
+```{r}
+ggplot(data = pileup_heyn_df_high, aes(x=X))+
+  
+  geom_line(aes(y=nb, colour = "nb", group =1), linewidth = 1)+
+  geom_line(aes(y=mid, colour = "mid", group =1), linewidth = 1)+
+  geom_line(aes(y=old, colour = "old", group =1), linewidth = 1)+
+  
+  scale_x_discrete(breaks = c(1, 41, 121, 160), labels = c("-10kb", "start", "end", "+10kb")) +
+  scale_colour_manual(name = "DMVs", 
+                      values = c("#ff9999","#ff3333","#990000"),
+                      breaks=c("nb","mid","old"),
+                      labels=c("nb","mid","old"))+
+  xlab("")+
+  ylab("DNAme (M/T ratio)")+
+  ylim(c(0,0.7))+
+  theme_bw()+
+  theme(text = element_text(size = 16),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+dev.off()
+```
+
+* Polycomb positive hDMVs
+
+```{r}
+ggplot(data = pileup_heyn_df_low, aes(x=X))+
+  
+  geom_line(aes(y=nb, colour = "nb", group =1), linewidth = 1)+
+  geom_line(aes(y=mid, colour = "mid", group =1), linewidth = 1)+
+  geom_line(aes(y=old, colour = "old", group =1), linewidth = 1)+
+  
+  scale_x_discrete(breaks = c(1, 41, 121, 160), labels = c("-10kb", "start", "end", "+10kb")) +
+  scale_colour_manual(name = "DMVs", 
+                      values = c("#66ffb2","#2AD82A","#00994C"),
+                      breaks=c("nb","mid","old"),
+                      labels=c("nb","mid","old"))+
+  xlab("")+
+  ylab("DNAme (M/T ratio)")+
+  ylim(c(0,0.9))+
+  theme_bw()+
+  theme(text = element_text(size = 16),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+```
+
+### Fig6.c
+
+Generation Scotland DNA methylation values correlation with age
+
+6. Plot violin plots for CpG correltation with age. Use HESJAS gain DMR associated CpGs and Horvath's epiclock CpGs.
+
+```{r}
+ggplot(data = gen_scot_df, aes(x = type, y = cor, fill = type))+
+  geom_violin(alpha = 0.75)+
+  scale_fill_manual(values = c("#A8A8A8","#FF4343","#FF8000"))+
+  geom_boxplot(width = 0.1, fill = "white", outliers = F)+
+  geom_hline(yintercept = 0, lty = 3)+
+  scale_x_discrete(limits=c("control","horvath","dmr"))+
+  theme_classic() +
+  labs(x = "", y = "Pearson correlation")+
+  theme(legend.title = element_blank())
+```
+
+7. Calculate the p-value
+
+```{r}
+pairwise.wilcox.test(gen_scot_df$cor, gen_scot_df$type,
+                     p.adjust.method = "BH")
+```
+
+
+```{r}
+sessionInfo()
+```

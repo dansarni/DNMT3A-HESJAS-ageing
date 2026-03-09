@@ -1,0 +1,10 @@
+Feature,Count,cumCount,perc
+Promoter (2-3kb),81,81,6.677658697
+Promoter (1-2kb),87,168,7.172300082
+Promoter (<=1kb),768,936,63.31409728
+5' UTR,2,938,0.164880462
+Exon,71,1009,5.853256389
+Intron,70,1079,5.770816158
+3' UTR,27,1106,2.225886232
+Downstream (<=300bp),1,1107,0.082440231
+Distal Intergenic,106,1213,8.738664468

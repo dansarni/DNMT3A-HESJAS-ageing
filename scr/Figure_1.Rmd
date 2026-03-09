@@ -1,0 +1,64 @@
+---
+title: "Sarni et al., Figure 1"
+author: "dsarni"
+date: "22-02-2026"
+output: html_document
+---
+
+## Figure 1. HESJAS syndrome
+
+1. Library used for this figure.
+
+```{r}
+library(RColorBrewer)
+```
+
+2. Import data - DNA methylation in control and HESJAS patients within DNA hypermethylated DMRs.
+
+Input data for this figure will be processed and normalised beta values for CpGs within HESJAS hypermethylated DMRs.
+
+```{r}
+# Import data table
+
+hDMR_blood_beta <- read.csv("../data/Figure_1/Figure_1ef_hesjas_gain_dmr_meth.csv")
+```
+
+3. Compute the mean for control samples to be used for ordering the rows in the heatmap.
+
+```{r}
+hDMR_blood_beta.mean.ctrl <- apply(hDMR_blood_beta[,c(2:10)], 1, mean, na.rm=TRUE)
+```
+
+### Figure 1.e
+
+```{r}
+image(x=c(1:ncol(hDMR_blood_beta[,2:17])),y=c(1:nrow(hDMR_blood_beta)),
+      z=t(hDMR_blood_beta[order(hDMR_blood_beta.mean.ctrl), 2:17]),
+      col=rev(brewer.pal(10,"RdYlBu")),breaks=seq(0,1,by=0.1),
+      axes=FALSE,xlab="",ylab="DMRs with DNAme gain (n=1,183)")
+box()
+mtext(colnames(hDMR_blood_beta[,2:17]), line=0.5, side=1, at=c(1:16),
+      cex=0.6, las=2)
+```
+
+### Figure 1.f
+
+```{r}
+# For boxplots plot the mean beta values (DNA methylation) per condition, columns 18:19 in the data table
+
+boxplot(hDMR_blood_beta[,18:19],
+        names=rep("", times=2), range=0, ylim=c(0,1), col = c(("#4169C4"),("#FF6666")),
+        ylab="Beta Value", cex.main=1, main="EPIC - blood samples in up blood up.DMRs")
+mtext(colnames(hDMR_blood_beta)[18:19], line=0.5, side=1, at=c(1:2),
+      cex=0.6, las=2)
+```
+
+4. Compute the *P-value* for Figure 1.f using Wilcox.test.
+
+```{r}
+wilcox.test(hDMR_blood_beta[,18],hDMR_blood_beta[,19])
+```
+
+```{r}
+sessionInfo()
+```

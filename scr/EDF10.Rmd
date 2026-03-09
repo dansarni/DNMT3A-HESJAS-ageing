@@ -1,0 +1,106 @@
+---
+title: "Extended Figure Data 10"
+author: "dsarni"
+date: "04-03-2026"
+output: html_document
+---
+
+## Extended Data Figure 10. Examples of hypermethylated transcription factor promoter regions; accelerated epigenetic clock ageing in HESJAS
+
+1. Libraries used in this figure.
+
+```{r}
+library(ggplot2)
+```
+
+2. Import data.
+
+```{r}
+# EDF10.e
+human_epiClocks <- read.table("../data/EDF10/human_epiclock_hesjas.tsv", header = T)
+
+# EDF10.f
+mouse_epiClock <- read.csv("../data/EDF10/mouse_epiclock.csv")
+```
+
+### EDF10.e
+
+3. Plot epiclock age predictions for HESJAS patients and controls
+
+```{r}
+ggplot(human_epiClocks, aes(x = variable, y = value, color = Geno)) +
+  geom_jitter(position = position_dodge(width = 0.5), size = 3, alpha = 0.4) + #width = 0.2,
+  stat_summary(aes(group = Geno), fun = median, geom = "crossbar",
+               position = position_dodge(width = 0.6),
+               width = 0.5, fatten = 2, color = "grey20") +
+  geom_vline(xintercept = seq(1.5, length(unique(human_epiClocks$variable)) - 0.5, 1),
+             linetype = "dashed", color = "grey75") +
+  geom_hline(yintercept = 0, color = "grey65") +
+  theme_classic(base_size = 14) +
+  theme(legend.title = element_blank()) +
+  labs(x = "Epiclock", y = "Delta age pred.-chron. (years)") +
+  scale_color_manual(values = c("Control" = "royalblue3", "Patient" = "tomato3"))
+```
+
+4. Compute *p-values*
+
+* Hannum clock
+
+```{r}
+# Hannum
+hannum_df <- subset(human_epiClocks, variable == "Hannum")
+
+t.test(value ~ Geno, data = hannum_df, var.equal = F)
+```
+
+* Horvath clock
+
+```{r}
+# Horvath
+horvath_df <- subset(human_epiClocks, variable == "Horvath")
+
+t.test(value ~ Geno, data = horvath_df, var.equal = F)
+```
+
+* PhenoAge clock
+
+```{r}
+# PhenoAge
+phenoAge_df <- subset(human_epiClocks, variable == "PhenoAge")
+
+t.test(value ~ Geno, data = phenoAge_df, var.equal = F)
+```
+
+### EDF10.f
+
+5. Convert the age delta predictions from days to months
+
+```{r}
+mouse_epiClock$delta_month <- mouse_epiClock$Age_delta/30.5
+```
+
+6. Plot mouse epiclock age predictions delta
+
+```{r}
+ggplot(data = mouse_epiClock, aes(x = Condition, y = delta_month, color = as.factor(Condition)))+
+  geom_jitter(size = 4, alpha = 0.5, width = .2)+
+  scale_color_manual(values = c("Control" = "royalblue3", "Mutant" = "tomato3"))+
+  ylab("D age pred.-chron. (month)")+
+  xlab("")+
+  ylim(c(0,20))+
+  stat_summary(fun = median, geom = "crossbar", color = "black", width = 0.5, linewidth = 0.5, fatten = 2, show.legend = T)+
+  theme_classic()+
+  theme(text = element_text(size = 14),
+        axis.text = element_text(size = 14),
+        legend.position = "none")
+```
+
+7. Compute *p-values*
+
+```{r}
+t.test(delta_month ~ Condition, data = mouse_epiClock, var.equal = F)
+```
+
+```{r}
+sessionInfo()
+```

@@ -1,0 +1,155 @@
+---
+title: "Sarni et al., Extended Data Figure 9"
+author: "dsarni"
+date: "03-03-2026"
+output: html_document
+---
+
+## Extended Figure 9. Pax5 DNA hypermethylation is selectively lost in may B lymphocytes that progress to later differentiation stages
+
+1. Libraries used in this figure.
+
+```{r, message = F}
+library(ggplot2)
+```
+
+2. Import data
+
+```{r}
+# Get heatmap file names
+files.heatmap <- list.files(
+      #path = "U:/Datastore/IGMM/ajackson-wrkgrp/People/Dan/DNMT3A_Project/EM/EM_PCR/EM_conversion/Nature_Genetics_Figures_Feb2026/files_for_figures",
+      path = "../data/Figure_5_EDF9",
+      pattern = "^heatmap.*\\.tsv$",
+      full.names = TRUE
+)
+
+# Import files
+for (i in seq_along(files.heatmap)) {
+  assign(
+    tools::file_path_sans_ext(basename(files.heatmap[i])),
+    read.delim(files.heatmap[i]),
+    envir = .GlobalEnv
+  )
+}
+
+### Import violin plot df ###
+# Pax5
+violin_pax5_a_df <- read.table("../data/Figure_5_EDF9/Pax5_A_violin_df_03-03-2026.tsv", header = T)
+violin_pax5_b_df <- read.table("../data/Figure_5_EDF9/Pax5_B_violin_df_03-03-2026.tsv", header = T)
+violin_pax5_cf_df <- read.table("../data/Figure_5_EDF9/Pax5_CF_violin_df_03-03-2026.tsv", header = T)
+
+# Hoxc13
+violin_hoxc13_a_df <- read.table("../data/Figure_5_EDF9/Hoxc13_A_violin_df_03-03-2026.tsv", header = T)
+violin_hoxc13_b_df <- read.table("../data/Figure_5_EDF9/Hoxc13_B_violin_df_03-03-2026.tsv", header = T)
+violin_hoxc13_cf_df <- read.table("../data/Figure_5_EDF9/Hoxc13_CF_violin_df_03-03-2026.tsv", header = T)
+
+# Hoxd13
+violin_hoxd13_a_df <- read.table("../data/Figure_5_EDF9/Hoxd13_A_violin_df_03-03-2026.tsv", header = T)
+violin_hoxd13_b_df <- read.table("../data/Figure_5_EDF9/Hoxd13_B_violin_df_03-03-2026.tsv", header = T)
+violin_hoxd13_cf_df <- read.table("../data/Figure_5_EDF9/Hoxd13_CF_violin_df_03-03-2026.tsv", header = T)
+```
+
+
+3. List all heatmap files
+
+```{r}
+list_of_heatmap_df <- ls(pattern = "^heatmap") # all
+
+list_of_heatmap_pax5 <- ls(pattern = "^heatmap_Pax5") # Pax5
+list_of_heatmap_pax5
+
+list_of_heatmap_hoxc13 <- ls(pattern = "^heatmap_Hoxc13") # Hoxc13
+list_of_heatmap_hoxc13
+
+list_of_heatmap_hoxd13 <- ls(pattern = "^heatmap_Hoxd13") # Hoxd13
+list_of_heatmap_hoxd13
+```
+
+4. A function to plot heatmaps
+
+```{r}
+plot_heatmap <- function(df, n, title = deparse(substitute(df))) {
+  
+  heatmap(
+    as.matrix(df[, paste0("pos_", 1:n)]),
+    Rowv = NA,
+    Colv = NA,
+    col = c("white", "lightgrey", "darkblue"),
+    scale = "none",
+    labRow = NA,
+    main = title,
+    cex.main = 0.7,
+    labCol = 1:n
+  )
+}
+```
+
+5. Plot heatmaps
+
+* Pax5
+
+```{r}
+for (name in list_of_heatmap_pax5) {
+  plot_heatmap(get(name), 34, title = name)
+}
+```
+
+* Hoxc13
+
+```{r}
+for (name in list_of_heatmap_hoxc13) {
+  plot_heatmap(get(name), 70, title = name)
+}
+```
+
+* Hoxd13
+
+```{r}
+for (name in list_of_heatmap_hoxd13) {
+  plot_heatmap(get(name), 26, title = name)
+}
+```
+
+6. Violin plots
+
+List violin objects
+
+```{r}
+list_of_violin <- ls(pattern = "^violin") # Pax5
+list_of_violin
+```
+
+7. A function for violin plots
+
+```{r}
+plot_violin <- function(df, title = deparse(substitute(df))) {
+  
+v_plot <- ggplot(df, aes(x = animal, y = perc.meth, fill = geno))+
+                geom_violin(scale = "width", adjust = 1.5)+
+                stat_summary(fun = median, geom = "crossbar", width = 0.5, color = "black", fatten = 1.5)+
+                scale_fill_manual(values = c("+/+" = "#8c97ce", "W326R/+" = "#ec7c7e"))+
+                labs(x = "", y = "% of DNA methylation", title = name) +
+                ylim(c(0,100))+
+                theme_classic() +
+                theme(
+                  strip.text = element_text(size = 12),
+                  axis.text.x = element_blank(),
+                  axis.ticks.x = element_blank(),
+                  axis.title.x = element_blank()  
+                )
+print(v_plot)
+}
+```
+
+8. Plot violin plots
+
+```{r}
+for (name in list_of_violin) {
+  plot_violin(get(name), title = name)
+}
+```
+
+```{r}
+sessionInfo()
+```
