@@ -9,9 +9,16 @@ dsarni
 
 ``` r
 library(ggplot2)
+```
+
+    ## Warning: package 'ggplot2' was built under R version 4.5.3
+
+``` r
 library(RColorBrewer)
 library(stringr)
 ```
+
+    ## Warning: package 'stringr' was built under R version 4.5.3
 
 2.  Import data
 
@@ -21,6 +28,9 @@ hesjas_epic_density_df <- read.table("../data/EDF1/hesjas_epic_mCpG_density.tsv.
 
 # EDF1.d
 hDMR_blood_beta <- read.csv("../data/Figure_1/Figure_1ef_hesjas_gain_dmr_meth.csv")
+
+hDMR_blood_beta <- read.csv("../data/EDF1/data.up.dmr.blood_040724.csv")
+hDMR_blood_beta_del <- read.csv("../data/EDF1/data.up.dmr.rel.meth.APJ.blood.blood_040724.csv")
 
 # EDF1.e
 hDMR_chromHMM <- read.csv("../data/EDF1/combined_summaries_hDMV_101125.csv")
@@ -232,16 +242,16 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] stringr_1.5.1      RColorBrewer_1.1-3 ggplot2_3.5.2     
+    ## [1] stringr_1.6.0      RColorBrewer_1.1-3 ggplot2_4.0.2     
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] ggbeeswarm_0.7.2   vctrs_0.6.5        cli_3.6.5          knitr_1.50        
-    ##  [5] rlang_1.1.6        xfun_0.52          KernSmooth_2.23-26 stringi_1.8.7     
-    ##  [9] generics_0.1.4     Cairo_1.7-0        labeling_0.4.3     glue_1.8.0        
-    ## [13] htmltools_0.5.8.1  scales_1.4.0       rmarkdown_2.29     grid_4.5.0        
-    ## [17] evaluate_1.0.4     tibble_3.3.0       fastmap_1.2.0      yaml_2.3.10       
-    ## [21] lifecycle_1.0.4    vipor_0.4.7        compiler_4.5.0     dplyr_1.1.4       
-    ## [25] ggrastr_1.0.2      pkgconfig_2.0.3    rstudioapi_0.17.1  beeswarm_0.4.0    
-    ## [29] farver_2.1.2       digest_0.6.37      R6_2.6.1           tidyselect_1.2.1  
-    ## [33] pillar_1.11.0      magrittr_2.0.3     withr_3.0.2        tools_4.5.0       
-    ## [37] gtable_0.3.6
+    ##  [1] gtable_0.3.6       dplyr_1.2.0        compiler_4.5.0     tidyselect_1.2.1  
+    ##  [5] ggbeeswarm_0.7.3   scales_1.4.0       yaml_2.3.12        fastmap_1.2.0     
+    ##  [9] R6_2.6.1           labeling_0.4.3     generics_0.1.4     knitr_1.51        
+    ## [13] Cairo_1.7-0        tibble_3.3.1       pillar_1.11.1      rlang_1.1.7       
+    ## [17] stringi_1.8.7      xfun_0.57          S7_0.2.1           otel_0.2.0        
+    ## [21] cli_3.6.5          withr_3.0.2        magrittr_2.0.4     digest_0.6.39     
+    ## [25] grid_4.5.0         rstudioapi_0.18.0  beeswarm_0.4.0     lifecycle_1.0.5   
+    ## [29] ggrastr_1.0.2      vipor_0.4.7        vctrs_0.7.2        KernSmooth_2.23-26
+    ## [33] evaluate_1.0.5     glue_1.8.0         farver_2.1.2       rmarkdown_2.31    
+    ## [37] tools_4.5.0        pkgconfig_2.0.3    htmltools_0.5.9

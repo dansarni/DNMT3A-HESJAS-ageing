@@ -2,14 +2,14 @@
 title: "Sarni et al., Figure 6"
 author: "dsarni"
 date: "26-02-2026"
-output: html_document
+output: rmarkdown::github_document
 ---
 
 ## Figure 6. DNMT3AGOF hypermethylation corresponds to sites of DNA methylation gains in human ageing
 
 1. Libraries used in this figure.
 
-```{r, message = F}
+```{r, message = F, warning=F}
 library(ggplot2)
 library(dplyr)
 library(RColorBrewer)
@@ -19,8 +19,8 @@ library(RColorBrewer)
 
 ```{r}
 # Figure 6.b
-heyn_k27_high <- read.table("../data/Figure_6/Heyn_PNAS_hDMVs_k27_HIGH_hg19_20K_10k_250_211124.tsv", header = T)
-heyn_k27_low <- read.table("../data/Figure_6/Heyn_PNAS_hDMVs_k27_LOW_hg19_20K_10k_250_211124.tsv", header = T)
+heyn_k27_high <- read.table("../data/Figure_6/Heyn_PNAS_hDMVs_k27_HIGH_hg19_20K_10k_250_211124.tsv.gz", header = T)
+heyn_k27_low <- read.table("../data/Figure_6/Heyn_PNAS_hDMVs_k27_LOW_hg19_20K_10k_250_211124.tsv.gz", header = T)
 
 # Figure 6.c
 gen_scot_df <- read.table("../data/Figure_6/Gen_Scot_corr_hesjas_horvath.tsv.gz", header = T)

@@ -518,18 +518,19 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] RColorBrewer_1.1-3 stringr_1.5.1      readr_2.1.5        ggplot2_3.5.2     
-    ## [5] dplyr_1.1.4       
+    ## [1] RColorBrewer_1.1-3 stringr_1.6.0      readr_2.2.0        ggplot2_4.0.2     
+    ## [5] dplyr_1.2.0       
     ## 
     ## loaded via a namespace (and not attached):
     ##  [1] bit_4.6.0          gtable_0.3.6       compiler_4.5.0     crayon_1.5.3      
-    ##  [5] tidyselect_1.2.1   ggbeeswarm_0.7.2   parallel_4.5.0     scales_1.4.0      
-    ##  [9] yaml_2.3.10        fastmap_1.2.0      R6_2.6.1           labeling_0.4.3    
-    ## [13] generics_0.1.4     knitr_1.50         Cairo_1.7-0        tibble_3.3.0      
-    ## [17] pillar_1.11.0      tzdb_0.5.0         rlang_1.1.6        stringi_1.8.7     
-    ## [21] xfun_0.52          bit64_4.6.0-1      cli_3.6.5          withr_3.0.2       
-    ## [25] magrittr_2.0.3     digest_0.6.37      grid_4.5.0         vroom_1.6.5       
-    ## [29] rstudioapi_0.17.1  hms_1.1.3          beeswarm_0.4.0     lifecycle_1.0.4   
-    ## [33] vipor_0.4.7        ggrastr_1.0.2      vctrs_0.6.5        KernSmooth_2.23-26
-    ## [37] evaluate_1.0.4     glue_1.8.0         farver_2.1.2       rmarkdown_2.29    
-    ## [41] tools_4.5.0        pkgconfig_2.0.3    htmltools_0.5.8.1
+    ##  [5] tidyselect_1.2.1   ggbeeswarm_0.7.3   parallel_4.5.0     scales_1.4.0      
+    ##  [9] yaml_2.3.12        fastmap_1.2.0      R6_2.6.1           labeling_0.4.3    
+    ## [13] generics_0.1.4     knitr_1.51         Cairo_1.7-0        tibble_3.3.1      
+    ## [17] pillar_1.11.1      tzdb_0.5.0         rlang_1.1.7        stringi_1.8.7     
+    ## [21] xfun_0.57          S7_0.2.1           bit64_4.6.0-1      otel_0.2.0        
+    ## [25] cli_3.6.5          withr_3.0.2        magrittr_2.0.4     digest_0.6.39     
+    ## [29] grid_4.5.0         vroom_1.7.0        rstudioapi_0.18.0  hms_1.1.4         
+    ## [33] beeswarm_0.4.0     lifecycle_1.0.5    vipor_0.4.7        ggrastr_1.0.2     
+    ## [37] vctrs_0.7.2        KernSmooth_2.23-26 evaluate_1.0.5     glue_1.8.0        
+    ## [41] farver_2.1.2       rmarkdown_2.31     tools_4.5.0        pkgconfig_2.0.3   
+    ## [45] htmltools_0.5.9

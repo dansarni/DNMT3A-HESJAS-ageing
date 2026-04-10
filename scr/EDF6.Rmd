@@ -2,14 +2,14 @@
 title: "Sarni et al., Extended Data Figure 6"
 author: "dsarni"
 date: "03-03-2026"
-output: html_document
+output: rmarkdown::github_document
 ---
 
 ## Extended Data Figure 6. Hypermethylation at Polycomb-associated regions in Dnmt3a W326R/+ mouse adult stem cells
 
 1. Libraries used in this figure.
 
-```{r, message = F}
+```{r, message = F, warning=F}
 library(dplyr)
 library(ggplot2)
 library(readr)

@@ -2,14 +2,14 @@
 title: "Sarni et al., Figure 2"
 author: "dsarni"
 date: "24-02-2026"
-output: html_document
+output: rmarkdown::github_document
 ---
 
 ## Figure 2. Dnmt3a w326r/+ mice model HESJAS syndrome and exhibit multiple age-associated phenotypes
 
 1. Libraries used in this figure.
 
-```{r, message=F}
+```{r, message=F, warning=F}
 library(dplyr)
 library(ggplot2)
 library(RColorBrewer)

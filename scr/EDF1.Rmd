@@ -24,6 +24,9 @@ hesjas_epic_density_df <- read.table("../data/EDF1/hesjas_epic_mCpG_density.tsv.
 # EDF1.d
 hDMR_blood_beta <- read.csv("../data/Figure_1/Figure_1ef_hesjas_gain_dmr_meth.csv")
 
+hDMR_blood_beta <- read.csv("../data/EDF1/data.up.dmr.blood_040724.csv")
+hDMR_blood_beta_del <- read.csv("../data/EDF1/data.up.dmr.rel.meth.APJ.blood.blood_040724.csv")
+
 # EDF1.e
 hDMR_chromHMM <- read.csv("../data/EDF1/combined_summaries_hDMV_101125.csv")
 

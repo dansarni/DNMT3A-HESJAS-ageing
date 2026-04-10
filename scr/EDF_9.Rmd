@@ -2,7 +2,7 @@
 title: "Sarni et al., Extended Data Figure 9"
 author: "dsarni"
 date: "03-03-2026"
-output: html_document
+output: rmarkdown::github_document
 ---
 
 ## Extended Figure 9. Pax5 DNA hypermethylation is selectively lost in may B lymphocytes that progress to later differentiation stages

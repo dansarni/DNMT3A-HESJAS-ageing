@@ -1,14 +1,15 @@
 ---
 title: "Sarni et al., Extended Data Figure 4"
-output: html_document
+author: "dsarni"
 date: "03-03-2026"
+output: rmarkdown::github_document
 ---
 
 ## Extended Data Figure 4. Dnmt3a W326R/+ leads to progressive hypermethylation in adult mouse tissues
 
 1. libraires used in this figure.
 
-```{r, message = F}
+```{r, message = F, warning=F}
 library(dplyr)
 library(ggplot2)
 library(RColorBrewer)
@@ -120,6 +121,7 @@ ggplot(int.df, aes(x = Geno, y = Value, fill = Group)) +
     colour = "black",
     position = position_dodge(0.8)
   ) +
+  ylim(c(0,1))+
   scale_fill_manual(values = c(
     "+/+_4d" = "#d4def1",
     "+/+_23d" = "#90bde5",
@@ -252,6 +254,7 @@ ggplot(bm.df, aes(x = Geno, y = Value, fill = Group)) +
     colour = "black",
     position = position_dodge(0.8)
   ) +
+  ylim(c(0,1))+
   scale_fill_manual(values = c(
     "+/+_4d" = "#d4def1",
     "+/+_23d" = "#90bde5",
@@ -370,6 +373,7 @@ ggplot(li.df, aes(x = Geno, y = Value, fill = Group)) +
     colour = "black",
     position = position_dodge(0.8)
   ) +
+  ylim(c(0,1))+
   scale_fill_manual(values = c(
     "+/+_4d" = "#d4def1",
     "+/+_23d" = "#90bde5",

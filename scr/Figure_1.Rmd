@@ -2,14 +2,14 @@
 title: "Sarni et al., Figure 1"
 author: "dsarni"
 date: "22-02-2026"
-output: html_document
+output: rmarkdown::github_document
 ---
 
 ## Figure 1. HESJAS syndrome
 
 1. Library used for this figure.
 
-```{r}
+```{r, warning=F}
 library(RColorBrewer)
 ```
 

@@ -2,14 +2,14 @@
 title: "Extended Figure Data 10"
 author: "dsarni"
 date: "04-03-2026"
-output: html_document
+output: rmarkdown::github_document
 ---
 
 ## Extended Data Figure 10. Examples of hypermethylated transcription factor promoter regions; accelerated epigenetic clock ageing in HESJAS
 
 1. Libraries used in this figure.
 
-```{r}
+```{r, warning=F}
 library(ggplot2)
 ```
 

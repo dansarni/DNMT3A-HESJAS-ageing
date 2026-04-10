@@ -11,6 +11,8 @@ dsarni
 library(ggplot2)
 ```
 
+    ## Warning: package 'ggplot2' was built under R version 4.5.3
+
 2.  Import data
 
 ``` r
@@ -184,6 +186,12 @@ for (name in list_of_violin) {
 }
 ```
 
+    ## Warning: The `fatten` argument of `geom_crossbar()` is deprecated as of ggplot2 4.0.0.
+    ## ℹ Please use the `middle.linewidth` argument instead.
+    ## This warning is displayed once per session.
+    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+    ## generated.
+
 ![](EDF_9_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->![](EDF_9_files/figure-gfm/unnamed-chunk-10-2.png)<!-- -->![](EDF_9_files/figure-gfm/unnamed-chunk-10-3.png)<!-- -->![](EDF_9_files/figure-gfm/unnamed-chunk-10-4.png)<!-- -->![](EDF_9_files/figure-gfm/unnamed-chunk-10-5.png)<!-- -->![](EDF_9_files/figure-gfm/unnamed-chunk-10-6.png)<!-- -->![](EDF_9_files/figure-gfm/unnamed-chunk-10-7.png)<!-- -->![](EDF_9_files/figure-gfm/unnamed-chunk-10-8.png)<!-- -->![](EDF_9_files/figure-gfm/unnamed-chunk-10-9.png)<!-- -->
 
 ``` r
@@ -211,14 +219,15 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] ggplot2_3.5.2
+    ## [1] ggplot2_4.0.2
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] vctrs_0.6.5        cli_3.6.5          knitr_1.50         rlang_1.1.6       
-    ##  [5] xfun_0.52          generics_0.1.4     labeling_0.4.3     glue_1.8.0        
-    ##  [9] htmltools_0.5.8.1  scales_1.4.0       rmarkdown_2.29     grid_4.5.0        
-    ## [13] evaluate_1.0.4     tibble_3.3.0       fastmap_1.2.0      yaml_2.3.10       
-    ## [17] lifecycle_1.0.4    compiler_4.5.0     dplyr_1.1.4        RColorBrewer_1.1-3
-    ## [21] pkgconfig_2.0.3    rstudioapi_0.17.1  farver_2.1.2       digest_0.6.37     
-    ## [25] R6_2.6.1           tidyselect_1.2.1   pillar_1.11.0      magrittr_2.0.3    
-    ## [29] withr_3.0.2        tools_4.5.0        gtable_0.3.6
+    ##  [1] vctrs_0.7.2        cli_3.6.5          knitr_1.51         rlang_1.1.7       
+    ##  [5] xfun_0.57          otel_0.2.0         generics_0.1.4     S7_0.2.1          
+    ##  [9] labeling_0.4.3     glue_1.8.0         htmltools_0.5.9    scales_1.4.0      
+    ## [13] rmarkdown_2.31     grid_4.5.0         tibble_3.3.1       evaluate_1.0.5    
+    ## [17] fastmap_1.2.0      yaml_2.3.12        lifecycle_1.0.5    compiler_4.5.0    
+    ## [21] dplyr_1.2.0        RColorBrewer_1.1-3 pkgconfig_2.0.3    rstudioapi_0.18.0 
+    ## [25] farver_2.1.2       digest_0.6.39      R6_2.6.1           tidyselect_1.2.1  
+    ## [29] pillar_1.11.1      magrittr_2.0.4     withr_3.0.2        tools_4.5.0       
+    ## [33] gtable_0.3.6

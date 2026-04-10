@@ -125,6 +125,7 @@ ggplot(int.df, aes(x = Geno, y = Value, fill = Group)) +
     colour = "black",
     position = position_dodge(0.8)
   ) +
+  ylim(c(0,1))+
   scale_fill_manual(values = c(
     "+/+_4d" = "#d4def1",
     "+/+_23d" = "#90bde5",
@@ -317,6 +318,7 @@ ggplot(bm.df, aes(x = Geno, y = Value, fill = Group)) +
     colour = "black",
     position = position_dodge(0.8)
   ) +
+  ylim(c(0,1))+
   scale_fill_manual(values = c(
     "+/+_4d" = "#d4def1",
     "+/+_23d" = "#90bde5",
@@ -492,6 +494,7 @@ ggplot(li.df, aes(x = Geno, y = Value, fill = Group)) +
     colour = "black",
     position = position_dodge(0.8)
   ) +
+  ylim(c(0,1))+
   scale_fill_manual(values = c(
     "+/+_4d" = "#d4def1",
     "+/+_23d" = "#90bde5",
@@ -755,15 +758,16 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] tidyr_1.3.1        stringr_1.5.1      RColorBrewer_1.1-3 ggplot2_3.5.2     
-    ## [5] dplyr_1.1.4       
+    ## [1] tidyr_1.3.2        stringr_1.6.0      RColorBrewer_1.1-3 ggplot2_4.0.2     
+    ## [5] dplyr_1.2.0       
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] vctrs_0.6.5       cli_3.6.5         knitr_1.50        rlang_1.1.6      
-    ##  [5] xfun_0.52         stringi_1.8.7     purrr_1.1.0       generics_0.1.4   
-    ##  [9] labeling_0.4.3    glue_1.8.0        htmltools_0.5.8.1 scales_1.4.0     
-    ## [13] rmarkdown_2.29    grid_4.5.0        evaluate_1.0.4    tibble_3.3.0     
-    ## [17] fastmap_1.2.0     yaml_2.3.10       lifecycle_1.0.4   compiler_4.5.0   
-    ## [21] pkgconfig_2.0.3   rstudioapi_0.17.1 farver_2.1.2      digest_0.6.37    
-    ## [25] R6_2.6.1          tidyselect_1.2.1  pillar_1.11.0     magrittr_2.0.3   
-    ## [29] withr_3.0.2       tools_4.5.0       gtable_0.3.6
+    ##  [1] vctrs_0.7.2       cli_3.6.5         knitr_1.51        rlang_1.1.7      
+    ##  [5] xfun_0.57         stringi_1.8.7     otel_0.2.0        purrr_1.2.1      
+    ##  [9] generics_0.1.4    S7_0.2.1          labeling_0.4.3    glue_1.8.0       
+    ## [13] htmltools_0.5.9   scales_1.4.0      rmarkdown_2.31    grid_4.5.0       
+    ## [17] evaluate_1.0.5    tibble_3.3.1      fastmap_1.2.0     yaml_2.3.12      
+    ## [21] lifecycle_1.0.5   compiler_4.5.0    pkgconfig_2.0.3   rstudioapi_0.18.0
+    ## [25] farver_2.1.2      digest_0.6.39     R6_2.6.1          tidyselect_1.2.1 
+    ## [29] pillar_1.11.1     magrittr_2.0.4    withr_3.0.2       tools_4.5.0      
+    ## [33] gtable_0.3.6

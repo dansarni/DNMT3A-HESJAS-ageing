@@ -100,6 +100,6 @@ sessionInfo()
     ## 
     ## loaded via a namespace (and not attached):
     ##  [1] compiler_4.5.0    fastmap_1.2.0     cli_3.6.5         tools_4.5.0      
-    ##  [5] htmltools_0.5.8.1 rstudioapi_0.17.1 yaml_2.3.10       rmarkdown_2.29   
-    ##  [9] knitr_1.50        xfun_0.52         digest_0.6.37     rlang_1.1.6      
-    ## [13] evaluate_1.0.4
+    ##  [5] htmltools_0.5.9   otel_0.2.0        rstudioapi_0.18.0 yaml_2.3.12      
+    ##  [9] rmarkdown_2.31    knitr_1.51        xfun_0.57         digest_0.6.39    
+    ## [13] rlang_1.1.7       evaluate_1.0.5

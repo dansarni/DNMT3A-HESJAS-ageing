@@ -2,14 +2,14 @@
 title: "Sarni et al., Figure 4"
 author: "dsarni"
 date: "25-02-2026"
-output: html_document
+output: rmarkdown::github_document
 ---
 
 ## Figure 4. Hypermethylation of Dnmt3a W326R/+ HSCs impacts multilineage differentiation trajectories
 
 1. Libraries used in this figure.
 
-```{r, message=F}
+```{r, message=F, warning=F}
 library(ggplot2)
 library(RColorBrewer)
 library(dplyr)
@@ -18,7 +18,7 @@ library(stringr)
 
 ### Figure 4.a. Stacked bar plot - number of DMRs in HSCs
 
-```{r}
+```{r, fig.width=2.5, fig.height=4}
 hsc_dmr <- data.frame(
   category = (c("Hypo", "Hyper")),
   value = c(56,4759)
