@@ -9,16 +9,9 @@ dsarni
 
 ``` r
 library(ggplot2)
-```
-
-    ## Warning: package 'ggplot2' was built under R version 4.5.3
-
-``` r
 library(RColorBrewer)
 library(stringr)
 ```
-
-    ## Warning: package 'stringr' was built under R version 4.5.3
 
 2.  Import data
 
@@ -27,10 +20,7 @@ library(stringr)
 hesjas_epic_density_df <- read.table("../data/EDF1/hesjas_epic_mCpG_density.tsv.gz", header = T)
 
 # EDF1.d
-hDMR_blood_beta <- read.csv("../data/Figure_1/Figure_1ef_hesjas_gain_dmr_meth.csv")
-
-hDMR_blood_beta <- read.csv("../data/EDF1/data.up.dmr.blood_040724.csv")
-hDMR_blood_beta_del <- read.csv("../data/EDF1/data.up.dmr.rel.meth.APJ.blood.blood_040724.csv")
+hDMR_blood_beta_norm <- read.csv("../data/EDF1/hesjas_epic_dmr_gain_norm.csv")
 
 # EDF1.e
 hDMR_chromHMM <- read.csv("../data/EDF1/combined_summaries_hDMV_101125.csv")
@@ -98,14 +88,13 @@ print(p.scat.color.epic.v2)
 ### EDF1.d
 
 ``` r
-delta_hDMR_blood_beta <- hDMR_blood_beta[,2:17] - hDMR_blood_beta[,18]
+hDMR_blood_beta_norm <- hDMR_blood_beta_norm[,2:17]
 
-boxplot(delta_hDMR_blood_beta[,1:16],
+boxplot(hDMR_blood_beta_norm[,1:16],
         names=rep("", times=16), range=0, col = c(rep("#4169C4",9),rep("#FF6666",7)),
-        ylab="Beta Value", cex.main=1, main="Boxplot EPIC - blood samples in up fib DMRs")
-mtext(colnames(delta_hDMR_blood_beta)[1:16], line=0.5, side=1, at=c(1:16),
+        ylab="Normalised Beta Value", cex.main=1, main="HESJAS EPIC - gain DMRs")
+mtext(colnames(hDMR_blood_beta_norm)[1:16], line=0.5, side=1, at=c(1:16),
       cex=0.6, las=2)
-abline(h=0, col="grey", lty = 2)
 ```
 
 ![](EDF1_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
